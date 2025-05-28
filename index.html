@@ -722,7 +722,68 @@
                 padding: 20px;
             }
         }
-    </style>
+    
+
+.dashboard-carousel {
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.glider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+}
+
+.dashboard-slide {
+    flex: 0 0 auto;
+    min-width: 280px;
+    max-width: 300px;
+    scroll-snap-align: start;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.dashboard-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.dashboard-slide:hover img {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-info {
+    margin-top: 10px;
+}
+
+.dashboard-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.dashboard-info p {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.glider-prev,
+.glider-next,
+.glider-dots {
+    display: none !important;
+}
+
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -736,7 +797,6 @@
                     <li><a href="#experience">Experiência</a></li>
                     <li><a href="#education">Educação</a></li>
                     <li><a href="#certifications">Certificações</a></li>
-                    <li><a href="#skills">Habilidades</a></li>
                     <li><a href="#projects">Projetos</a></li>
                     <button class="theme-toggle" id="themeToggle">
                         <i class="fas fa-moon"></i>
@@ -751,7 +811,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Perfil -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
@@ -778,7 +838,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Sobre Mim -->
     <section id="about">
         <div class="container">
             <div class="section-title">
@@ -796,19 +856,19 @@
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>Análise de Dados</span>
-                            <span>90%</span>
+                            <span>75%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
+                            <div class="skill-progress" style="width: 75%;"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>Power BI</span>
-                            <span>85%</span>
+                            <span>80%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
+                            <div class="skill-progress" style="width: 80%;"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -829,12 +889,29 @@
                             <div class="skill-progress" style="width: 80%;"></div>
                         </div>
                     </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Inglês</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>					
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 40%;"></div>
+                        </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- Experiencia -->
     <section id="experience">
         <div class="container">
             <div class="section-title">
@@ -883,61 +960,56 @@
                 </div>
             </div>
 
-            <div class="dashboard-carousel">
-                <div class="glider-contain">
-                    <div class="glider">
-                        <div class="dashboard-slide">
-                            <img src="dashboard1.jpeg" alt="Análise de Vendas - X Sales">
-                            <div class="dashboard-info">
-                                <h3>Análise de Vendas - X Sales</h3>
-                                <p>Dashboard interativo com análise de desempenho de vendas</p>
-                            </div>
-                        </div>
-                        <div class="dashboard-slide">
-                            <img src="dashboard2.jpeg" alt="Relatório Financeiro">
-                            <div class="dashboard-info">
-                                <h3>Relatório Financeiro</h3>
-                                <p>Visão consolidada das finanças da empresa com indicadores-chave</p>
-                            </div>
-                        </div>
-                        <div class="dashboard-slide">
-                            <img src="dashboard3.jpeg" alt="Relatório de Ações Negociadas">
-                            <div class="dashboard-info">
-                                <h3>Relatório de Ações Negociadas</h3>
-                                <p>Análise de volume e desempenho de ações no mercado</p>
-                            </div>
-                        </div>
-                        <div class="dashboard-slide">
-                            <img src="dashboard4.jpeg" alt="Relatório Financeiro Balanço Patrimonial">
-                            <div class="dashboard-info">
-                                <h3>Balanço Patrimonial</h3>
-                                <p>Visão detalhada dos ativos, passivos e patrimônio líquido</p>
-                            </div>
-                        </div>
-                        <div class="dashboard-slide">
-                            <img src="dashboard5.jpeg" alt="Relatório de Logística">
-                            <div class="dashboard-info">
-                                <h3>Relatório de Logística</h3>
-                                <p>Monitoramento de eficiência na cadeia de suprimentos</p>
-                            </div>
-                        </div>
-                        <div class="dashboard-slide">
-                            <img src="dashboard6.jpeg" alt="Relatório de Receita por Componente">
-                            <div class="dashboard-info">
-                                <h3>Receita por Componente</h3>
-                                <p>Análise de contribuição de produtos/serviços para a receita</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="glider-prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="glider-next"><i class="fas fa-chevron-right"></i></button>
-                    <div class="glider-dots"></div>
-                </div>
+            
+<!-- Relatórios / Dashboards -->
+<div class="dashboard-carousel">
+    <div class="glider">
+        <div class="dashboard-slide">
+            <img src="dashboard1.jpeg" alt="Análise de Vendas - X Sales">
+            <div class="dashboard-info">
+                <h3>Análise de Vendas - X Sales</h3>
+                <p>Dashboard interativo com análise de desempenho de vendas</p>
             </div>
         </div>
-    </section>
+        <div class="dashboard-slide">
+            <img src="dashboard2.jpeg" alt="Relatório Financeiro">
+            <div class="dashboard-info">
+                <h3>Relatório Financeiro</h3>
+                <p>Visão consolidada das finanças da empresa com indicadores-chave</p>
+            </div>
+        </div>
+        <div class="dashboard-slide">
+            <img src="dashboard3.jpeg" alt="Relatório de Ações Negociadas">
+            <div class="dashboard-info">
+                <h3>Relatório de Ações Negociadas</h3>
+                <p>Análise de volume e desempenho de ações no mercado</p>
+            </div>
+        </div>
+        <div class="dashboard-slide">
+            <img src="dashboard4.jpeg" alt="Relatório Financeiro Balanço Patrimonial">
+            <div class="dashboard-info">
+                <h3>Balanço Patrimonial</h3>
+                <p>Visão detalhada dos ativos, passivos e patrimônio líquido</p>
+            </div>
+        </div>
+        <div class="dashboard-slide">
+            <img src="dashboard5.jpeg" alt="Relatório de Logística">
+            <div class="dashboard-info">
+                <h3>Relatório de Logística</h3>
+                <p>Monitoramento de eficiência na cadeia de suprimentos</p>
+            </div>
+        </div>
+        <div class="dashboard-slide">
+            <img src="dashboard6.jpeg" alt="Relatório de Receita por Componente">
+            <div class="dashboard-info">
+                <h3>Receita por Componente</h3>
+                <p>Análise de contribuição de produtos/serviços para a receita</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- Education Section -->
+    <!-- Educação -->
     <section id="education">
         <div class="container">
             <div class="section-title">
@@ -968,7 +1040,7 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
+    <!-- Certificações -->
     <section id="certifications">
         <div class="container">
             <div class="section-title">
@@ -1028,34 +1100,7 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-title">
-                <h2>Habilidades e Idiomas</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="card">
-                    <h3>Habilidades Técnicas</h3>
-                    <div class="description">
-                        <p><strong>Power BI:</strong> Criação de dashboards interativos, modelagem de dados, DAX, Power Query e publicação no serviço Power BI. Experiência em otimização de modelos para grandes volumes de dados.</p>
-                        <p><strong>Python:</strong> Pandas para manipulação de dados, NumPy para cálculos científicos, Matplotlib/Seaborn para visualização, Scikit-learn para machine learning básico. Automação de tarefas e desenvolvimento de scripts utilitários.</p>
-                        <p><strong>Análise de Dados:</strong> Limpeza e transformação de dados, análise exploratória, criação de métricas e KPIs, storytelling com dados. Experiência com SQL para consulta e manipulação de bancos relacionais.</p>
-                        <p><strong>Redes:</strong> Conhecimento em protocolos TCP/IP, configuração básica de roteadores e switches, monitoramento com Zabbix e Grafana. Experiência prática em troubleshooting de redes FTTH.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Idiomas</h3>
-                    <div class="description">
-                        <p><strong>Português:</strong> Idioma nativo, com excelente capacidade de comunicação escrita e verbal. Experiência em documentação técnica e relatórios executivos.</p>
-                        <p><strong>Inglês:</strong> Nível avançado (C1), com capacidade para leitura técnica, escrita de e-mails profissionais e conversação fluente. Participei da tradução voluntária de episódios de séries e filmes, o que aprimorou minha compreensão de nuances linguísticas.</p>
-                        <p><strong>Espanhol:</strong> Nível básico (A1), suficiente para leitura simples e não técnica.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+  
     <!-- Footer -->
     <footer>
         <div class="container">
