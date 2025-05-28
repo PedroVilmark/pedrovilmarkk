@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Vilmar - Portfólio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Pedro Vilmar</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#educacao">Educação</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#dashboards">Dashboards</a>
+        </nav>
+        <div class="switch">
+            <label>🌙</label>
+            <input type="checkbox" id="darkModeToggle">
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Bem-vindo!</h2>
+            <p><strong>Pedro Vilmar</strong> - Analista de Dados JR na Vitru</p>
+            <p>“Soluções eficientes com dados, redes e tecnologia.”</p>
+            <p>Contato: pedrovilmardossantos@gmail.com | (47) 99119-9956 | Blumenau/SC</p>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <div class="card">
+                <p>Sou apaixonado por tecnologia desde cedo, mas foi pela influência dos meus irmãos que migrei para TI. Me encontrei na área de dados, onde consigo unir lógica, raciocínio e criatividade. No tempo livre, gosto de acampar e fazer origami.</p>
+            </div>
+        </section>
+
+        <section id="experiencia">
+            <h2>Experiência Profissional</h2>
+            <div class="card">Analista de Dados JR — Vitru (abr/2025 – atual)<br><small>Foco na criação, manutenção e análise de dashboards para tomada de decisão.</small></div>
+            <div class="card">Analista de Suporte Operacional — Unifique (abr/2024 – fev/2025)<br><small>Atuação no suporte técnico e monitoramento de redes de telecomunicações.</small></div>
+            <div class="card">Assistente de Redes — Engecel (mar/2023 – abr/2024)<br><small>Trabalhei com instalação, manutenção e configuração de redes de telecom.</small></div>
+            <div class="card">Aprendiz de Sistemas de Informação — Unifique (set/2020 – dez/2021)<br><small>Auxílio em processos de TI e suporte básico interno.</small></div>
+        </section>
+
+        <section id="educacao">
+            <h2>Educação</h2>
+            <div class="card">Engenharia de Software — Uniasselvi (jul/2023 – atual)<br><small>Formação em desenvolvimento de software, sistemas e soluções tecnológicas.</small></div>
+            <div class="card">Física — Uniasselvi (jan/2022 – jun/2023)<br><small>Conhecimentos sólidos em lógica, matemática e resolução de problemas.</small></div>
+        </section>
+
+        <section id="cursos">
+            <h2>Cursos e Certificações</h2>
+            <div class="card">Business Intelligence, Python e Data Science — Data Science Academy (2025)<br><small>Foco em análise de dados, modelagem e BI.</small></div>
+            <div class="card">Zabbix, Grafana, FTTH, TCP/IP — Cademi (2025)<br><small>Monitoramento de redes, infra e telecom.</small></div>
+            <div class="card">Excelência no Atendimento, Redes, Liderança — DNA Unifique (2024)<br><small>Desenvolvimento de soft skills e liderança.</small></div>
+            <div class="card">Assistente Administrativo — SENAI/SESI (2020–2021)<br><small>Rotinas administrativas e suporte operacional.</small></div>
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades e Idiomas</h2>
+            <div class="card">Habilidades: Power BI, Python, Análise de Dados, Autocad, Pacote Office, Informática geral</div>
+            <div class="card">Idiomas: Português (fluente), Inglês (avançado), Espanhol (básico)</div>
+        </section>
+
+        <section id="dashboards">
+            <h2>Dashboards</h2>
+            <div class="carousel">
+                <img src="assets/img/dashboard1.png" alt="Dashboard 1">
+                <img src="assets/img/dashboard2.png" alt="Dashboard 2">
+                <img src="assets/img/dashboard3.png" alt="Dashboard 3">
+                <img src="assets/img/dashboard4.png" alt="Dashboard 4">
+                <img src="assets/img/dashboard5.png" alt="Dashboard 5">
+                <img src="assets/img/dashboard6.png" alt="Dashboard 6">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Pedro Vilmar</p>
+        <p><a href="https://www.linkedin.com/in/pedrovilmar/" target="_blank">LinkedIn</a> | <a href="https://www.instagram.com/pedrovilmarkk/" target="_blank">Instagram</a></p>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('darkModeToggle');
+        toggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+        });
+    </script>
+</body>
+</html>
