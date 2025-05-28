@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedro Vilmar - Analista de Dados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.7/glider.min.css">
     <style>
         :root {
             --primary-color: #1a73e8;
@@ -232,16 +233,6 @@
             align-items: center;
             gap: 10px;
             color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover {
-            color: var(--primary-color);
-        }
-
-        .contact-item a {
-            color: inherit;
-            text-decoration: none;
         }
 
         .contact-item i {
@@ -260,24 +251,12 @@
             border: none;
             cursor: pointer;
             box-shadow: var(--shadow);
-            margin: 5px;
         }
 
         .btn:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
         }
 
         .section-title {
@@ -331,14 +310,6 @@
             min-width: 300px;
         }
 
-        .skills h4 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin: 25px 0 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid var(--gray-color);
-        }
-
         .skill-item {
             margin-bottom: 20px;
         }
@@ -380,8 +351,8 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card h3 {
@@ -415,7 +386,6 @@
 
         .card .read-more:hover {
             text-decoration: underline;
-            transform: translateX(5px);
         }
 
         .card .description {
@@ -424,7 +394,7 @@
             font-size: 0.95rem;
             line-height: 1.6;
             color: var(--text-dark);
-            transition: max-height 0.5s ease;
+            transition: max-height 0.5s ease-in-out;
         }
 
         .card.active .description {
@@ -435,52 +405,25 @@
         /* Carrossel de Dashboards */
         .dashboard-carousel {
             position: relative;
-            max-width: 100%;
+            max-width: 900px;
             margin: 40px auto 0;
-            overflow-x: auto;
-            padding: 20px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-color) var(--gray-color);
         }
 
-        .dashboard-carousel::-webkit-scrollbar {
-            height: 8px;
+        .glider-contain {
+            position: relative;
         }
 
-        .dashboard-carousel::-webkit-scrollbar-track {
-            background: var(--gray-color);
-            border-radius: 10px;
-        }
-
-        .dashboard-carousel::-webkit-scrollbar-thumb {
-            background-color: var(--primary-color);
-            border-radius: 10px;
-        }
-
-        .dashboards-container {
-            display: flex;
-            gap: 20px;
-            padding: 10px;
-            width: max-content;
+        .glider {
+            overflow: hidden;
         }
 
         .dashboard-slide {
-            flex: 0 0 auto;
-            width: 280px;
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .dashboard-slide:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            text-align: center;
         }
 
         .dashboard-slide img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: var(--shadow);
@@ -488,7 +431,7 @@
         }
 
         .dashboard-slide:hover img {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         .dashboard-info {
@@ -498,12 +441,56 @@
         .dashboard-info h3 {
             color: var(--primary-color);
             margin-bottom: 5px;
-            font-size: 1.1rem;
         }
 
-        .dashboard-info p {
-            font-size: 0.9rem;
-            color: var(--text-dark);
+        .glider-prev, .glider-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .glider-prev:hover, .glider-next:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .glider-prev {
+            left: -20px;
+        }
+
+        .glider-next {
+            right: -20px;
+        }
+
+        .glider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .glider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--gray-color);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .glider-dot.active {
+            background-color: var(--primary-color);
         }
 
         /* Aquário de Habilidades */
@@ -546,6 +533,16 @@
             max-height: 300px;
             padding: 15px;
             margin-top: 15px;
+        }
+
+        .language-item {
+            margin-bottom: 15px;
+        }
+
+        .language-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
         }
 
         footer {
@@ -698,6 +695,14 @@
                 align-items: center;
                 gap: 10px;
             }
+
+            .glider-prev {
+                left: 0;
+            }
+
+            .glider-next {
+                right: 0;
+            }
         }
 
         @media (max-width: 480px) {
@@ -731,7 +736,7 @@
                     <li><a href="#experience">Experiência</a></li>
                     <li><a href="#education">Educação</a></li>
                     <li><a href="#certifications">Certificações</a></li>
-                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
                     <button class="theme-toggle" id="themeToggle">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -756,21 +761,18 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:pedrovilmardossantos@gmail.com">pedrovilmardossantos@gmail.com</a>
+                        <span>pedrovilmardossantos@gmail.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <a href="tel:+5547991199956">(47) 99119-9956</a>
+                        <span>(47) 99119-9956</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Blumenau/SC</span>
                     </div>
                 </div>
-                <div>
-                    <a href="#about" class="btn">Saiba Mais</a>
-                    <a href="#" class="btn btn-outline">Download CV</a>
-                </div>
+                <a href="#about" class="btn">Saiba Mais</a>
             </div>
         </div>
     </section>
@@ -790,55 +792,31 @@
                 </div>
                 <div class="skills">
                     <h3>Minhas Especialidades</h3>
-                    
-                    <h4>Análise de Dados</h4>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Power BI</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>SQL</span>
+                            <span>Análise de Dados</span>
                             <span>70%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="width: 70%;"></div>
                         </div>
                     </div>
-                    
-                    <h4>Ferramentas</h4>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Excel</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>40%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 40%;"></div>
-                        </div>
-                    </div>
-                    
-                    <h4>Redes e Infraestrutura</h4>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Redes de Telecom</span>
+                            <span>Power BI</span>
                             <span>75%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Redes de Telecom</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%;"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -850,6 +828,23 @@
                             <div class="skill-progress" style="width: 80%;"></div>
                         </div>
                     </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Inglês</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -904,57 +899,9 @@
                 </div>
             </div>
 
-            <!-- Relatórios / Dashboards -->
-            <div class="dashboard-carousel">
-                <div class="dashboards-container">
-                    <div class="dashboard-slide">
-                        <img src="dashboard1.jpeg" alt="Análise de Vendas - X Sales">
-                        <div class="dashboard-info">
-                            <h3>Análise de Vendas - X Sales</h3>
-                            <p>Dashboard interativo com análise de desempenho de vendas</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-slide">
-                        <img src="dashboard2.jpeg" alt="Relatório Financeiro">
-                        <div class="dashboard-info">
-                            <h3>Relatório Financeiro</h3>
-                            <p>Visão consolidada das finanças da empresa com indicadores-chave</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-slide">
-                        <img src="dashboard3.jpeg" alt="Relatório de Ações Negociadas">
-                        <div class="dashboard-info">
-                            <h3>Relatório de Ações Negociadas</h3>
-                            <p>Análise de volume e desempenho de ações no mercado</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-slide">
-                        <img src="dashboard4.jpeg" alt="Relatório Financeiro Balanço Patrimonial">
-                        <div class="dashboard-info">
-                            <h3>Balanço Patrimonial</h3>
-                            <p>Visão detalhada dos ativos, passivos e patrimônio líquido</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-slide">
-                        <img src="dashboard5.jpeg" alt="Relatório de Logística">
-                        <div class="dashboard-info">
-                            <h3>Relatório de Logística</h3>
-                            <p>Monitoramento de eficiência na cadeia de suprimentos</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-slide">
-                        <img src="dashboard6.jpeg" alt="Relatório de Receita por Componente">
-                        <div class="dashboard-info">
-                            <h3>Receita por Componente</h3>
-                            <p>Análise de contribuição de produtos/serviços para a receita</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Educação -->
+
+    <!-- Education Section -->
     <section id="education">
         <div class="container">
             <div class="section-title">
@@ -981,11 +928,21 @@
                         <p>Interrompi o curso para focar na carreira de tecnologia, mas levei da física o pensamento lógico e metodológico que aplico diariamente em análise de dados e resolução de problemas técnicos.</p>
                     </div>
                 </div>
+                <div class="card">
+                    <h3>Ensino Medio</h3>
+                    <h4>E.E.B. Frederico Hardt</h4>
+                    <span class="date">2019 – 2021</span>
+                    <div class="read-more">Ler mais</div>
+                    <div class="description">
+						<p>Durante o ensino médio, desenvolvi uma base sólida em disciplinas fundamentais como matemática, física e português, que contribuíram diretamente para minha capacidade analítica e de comunicação.</p>
+						<p>Participei de projetos escolares, apresentações e atividades em grupo que reforçaram habilidades como trabalho em equipe, responsabilidade e organização. Esse período também despertou meu interesse por tecnologia e ciências exatas.</p>
+					</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Certificações -->
+    <!-- Certifications Section -->
     <section id="certifications">
         <div class="container">
             <div class="section-title">
@@ -1005,4 +962,316 @@
                 <div class="card">
                     <h3>Python e Data Science</h3>
                     <h4>Data Science Academy</h4>
-                    <span class="date">2025</span
+                    <span class="date">2025</span>
+                    <div class="read-more">Ler mais</div>
+                    <div class="description">
+                        <p>Introdução ao Python aplicado à análise de dados, abordando bibliotecas básicas como Pandas e Matplotlib para manipulação e visualização de dados. O curso proporcionou uma visão geral das possibilidades da linguagem para análise de dados.</p>
+                        <p>Conteúdo incluiu: estruturas de dados em Python, leitura e manipulação de DataFrames com Pandas, criação de gráficos básicos e introdução a conceitos de análise exploratória de dados.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Zabbix, Grafana, FTTH, TCP/IP</h3>
+                    <h4>Cademi</h4>
+                    <span class="date">2025</span>
+                    <div class="read-more">Ler mais</div>
+                    <div class="description">
+                        <p>Certificação em ferramentas essenciais para monitoramento de redes (Zabbix e Grafana) e fundamentos de redes de fibra óptica (FTTH) e protocolos TCP/IP. Aprendizado prático na configuração de sistemas de monitoramento e diagnóstico de problemas de rede.</p>
+                        <p>Conteúdo incluiu: configuração de alertas no Zabbix, criação de dashboards no Grafana, princípios de operação de redes FTTH e fundamentos dos protocolos TCP/IP para troubleshooting.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Excelência no Atendimento, Redes, Liderança</h3>
+                    <h4>DNA Unifique</h4>
+                    <span class="date">2024</span>
+                    <div class="read-more">Ler mais</div>
+                    <div class="description">
+                        <p>Programa de desenvolvimento profissional da Unifique, com módulos técnicos (redes) e comportamentais (liderança e atendimento). Destaque para o treinamento hands-on em configuração de equipamentos de rede e técnicas avançadas de troubleshooting.</p>
+                        <p>O módulo de liderança foi especialmente valioso, proporcionando ferramentas para gestão de equipes técnicas e resolução de conflitos em ambientes de alta pressão.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Assistente Administrativo</h3>
+                    <h4>SENAI/SESI</h4>
+                    <span class="date">2020–2021</span>
+                    <div class="description">
+                        <p>Formação técnica que proporcionou base sólida em processos administrativos, gestão documental e ferramentas de produtividade. Aprendizado prático com pacote Office avançado, organização de arquivos e atendimento ao cliente.</p>
+                        <p>Essa base administrativa foi fundamental para desenvolver organização e capacidade de documentação que aplico até hoje em projetos de TI e análise de dados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Habilidades e Idiomas</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="card">
+                    <h3>Habilidades Técnicas</h3>
+					<div class="read-more">Ler mais</div>
+                    <div class="description">
+                        <p><strong>Power BI:</strong> Criação de dashboards interativos, modelagem de dados, DAX, Power Query e publicação no serviço Power BI. Experiência em otimização de modelos para grandes volumes de dados.</p>
+                        <p><strong>Python:</strong> Pandas para manipulação de dados, NumPy para cálculos científicos, Matplotlib/Seaborn para visualização, Scikit-learn para machine learning básico. Automação de tarefas e desenvolvimento de scripts utilitários.</p>
+                        <p><strong>Análise de Dados:</strong> Limpeza e transformação de dados, análise exploratória, criação de métricas e KPIs, storytelling com dados. Experiência com SQL para consulta e manipulação de bancos relacionais.</p>
+                        <p><strong>Redes:</strong> Conhecimento em protocolos TCP/IP, configuração básica de roteadores e switches, monitoramento com Zabbix e Grafana. Experiência prática em troubleshooting de redes FTTH.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Habilidades Sociais</h3>
+					<div class="read-more">Ler mais</div>
+                    <div class="description">
+                         <p><strong>Trabalho em equipe:</strong> Facilidade em colaborar com equipes multidisciplinares, promovendo um ambiente de cooperação e respeito mútuo. Experiência em projetos conjuntos com prazos e metas compartilhadas.</p>
+						 <p><strong>Comunicação interpessoal:</strong> Capacidade de escuta ativa, clareza na transmissão de ideias e empatia no trato com colegas e clientes.</p>
+					     <p><strong>Gestão de tempo:</strong> Organização e priorização de tarefas para garantir a entrega pontual de demandas, mesmo em contextos de alta pressão.</p>
+						 <p><strong>Resolução de problemas:</strong> Habilidade para identificar causas de problemas, propor soluções práticas e tomar decisões com base em dados e contexto.</p>
+    </div>
+                </div>
+                <div class="card">
+                    <h3>Idiomas</h3>
+					<div class="read-more">Ler mais</div>
+                    <div class="description">
+                        <p><strong>Português:</strong> Idioma nativo, com excelente capacidade de comunicação escrita e verbal. Experiência em documentação técnica e relatórios executivos.</p>
+                        <p><strong>Inglês:</strong> Nível avançado (C1), com capacidade para leitura técnica, escrita de e-mails profissionais e conversação fluente. Participei da tradução voluntária de episódios de séries e filmes, o que aprimorou minha compreensão de nuances linguísticas.</p>
+                        <p><strong>Espanhol:</strong> Nível básico (A1), suficiente para leitura simples e não técnica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Dashboards -->
+    <section id="dashboard-carousel">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dashboards em BI</h2>
+                    <div class="glider">
+                        <div class="dashboard-slide">
+                            <img src="dashboard2.jpeg" alt="Relatório Financeiro">
+                            <div class="dashboard-info">
+                                <h3>Relatório Financeiro</h3>
+                                <p>Visão consolidada das finanças da empresa com indicadores-chave</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-slide">
+                            <img src="dashboard3.jpeg" alt="Relatório de Ações Negociadas">
+                            <div class="dashboard-info">
+                                <h3>Relatório de Ações Negociadas</h3>
+                                <p>Análise de volume e desempenho de ações no mercado</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-slide">
+                            <img src="dashboard5.jpeg" alt="Relatório de Logística">
+                            <div class="dashboard-info">
+                                <h3>Relatório de Logística</h3>
+                                <p>Monitoramento de eficiência na cadeia de suprimentos</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-slide">
+                            <img src="dashboard6.jpeg" alt="Relatório de Receita por Componente">
+                            <div class="dashboard-info">
+                                <h3>Receita por Componente</h3>
+                                <p>Análise de contribuição de produtos/serviços para a receita</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+	
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre</h3>
+                    <p>Pedro Vilmar é um profissional de tecnologia focado em análise de dados, com experiência em redes e desenvolvimento de soluções eficientes.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pedrovilmar/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/pedrovilmarkk/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:pedrovilmardossantos@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-envelope"></i> pedrovilmardossantos@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> (47) 99119-9956</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Blumenau/SC, Brasil</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navegação</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Sobre Mim</a></li>
+                        <li><a href="#experience">Experiência</a></li>
+                        <li><a href="#education">Educação</a></li>
+                        <li><a href="#certifications">Certificações</a></li>
+                        <li><a href="#skills">Habilidades</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pedro Vilmar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Card Click Effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Close all other open cards in the same section
+                const parentSection = this.closest('section');
+                parentSection.querySelectorAll('.card').forEach(c => {
+                    if (c !== this) {
+                        c.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current card
+                this.classList.toggle('active');
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Create particles
+        function createParticles() {
+            const particleCount = 30;
+            const colors = ['rgba(26, 115, 232, 0.3)', 'rgba(66, 133, 244, 0.3)', 'rgba(13, 71, 161, 0.3)'];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const opacity = Math.random() * 0.5 + 0.1;
+                
+                // Apply properties
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.opacity = opacity;
+                
+                // Add to body
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when DOM is loaded
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // Animate skills on scroll
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'about') {
+                        animateSkills();
+                    }
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
